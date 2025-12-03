@@ -1,8 +1,14 @@
+#!/bin/bash
+ARCH=amd64
+PLATFORM=$(uname -s)_$ARCH
+
 growpart /dev/nvme0n1 4
 lvextend -l +70%FREE /dev/RootVG/rootVol
 lvextend -l +70%FREE /dev/RootVG/varVol
+lvextend -l +70%FREE /dev/mapper/RootVG-homeVol
 xfs_growfs /
 xfs_growfs /var
+xfs_growfs /home
 
 curl -o /etc/yum.repos.d/jenkins.repo \
     https://pkg.jenkins.io/redhat-stable/jenkins.repo
