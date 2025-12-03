@@ -7,10 +7,10 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "expense-docker1"
+    bucket = "terraform-dynamo-statefile"
     key    = "expense-cicd" # you should have unique keys with in the bucket, same key should not be used in other repos or tf projects
     region = "us-east-1"
-    dynamodb_table = "tf-remote-state-dev"
+    dynamodb_table = "state-lock"
   }
 }
 
