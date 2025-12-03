@@ -1,6 +1,6 @@
 resource "aws_instance" "jenkins-server"{
     ami = "ami-09c813fb71547fc4f"
-    vpc_security_group_ids = [aws_security_group.docker_sg.id] 
+    vpc_security_group_ids = [aws_security_group.jenkins_sg.id] 
     instance_type = local.instance_type
     # 20GB is not enough
   root_block_device {
@@ -17,7 +17,7 @@ resource "aws_instance" "jenkins-server"{
 
 resource "aws_instance" "Jenkins-agent"{
     ami = "ami-09c813fb71547fc4f"
-    vpc_security_group_ids = [aws_security_group.docker_sg.id] 
+    vpc_security_group_ids = [aws_security_group.jenkins_sg.id] 
     instance_type = local.instance_type
     # 20GB is not enough
   root_block_device {
@@ -33,7 +33,7 @@ resource "aws_instance" "Jenkins-agent"{
 }
 
 
-resource "aws_security_group" "docker_sg" {
+resource "aws_security_group" "jenkins_sg" {
     name = "Docker_sg"
     description = "All inbound and outbound traffic"
     egress {
