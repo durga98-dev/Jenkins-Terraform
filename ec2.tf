@@ -34,7 +34,7 @@ resource "aws_instance" "Jenkins-agent"{
 
 
 resource "aws_security_group" "jenkins_sg" {
-    name = "Docker_sg"
+    name = "Jenkins_sg"
     description = "All inbound and outbound traffic"
     egress {
         from_port = 0
@@ -58,6 +58,6 @@ resource "aws_security_group" "jenkins_sg" {
     }
 
     tags = {
-        Name = "docker_sg"
+        Name = "jenkins_sg"
     }
 }
